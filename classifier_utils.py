@@ -1,22 +1,8 @@
 # coding=utf-8
-# Copyright 2018 The Google AI Team Authors.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 """Utility functions for GLUE classification tasks."""
 
 from __future__ import absolute_import
 from __future__ import division
-# from __future__ import google_type_annotations
 from __future__ import print_function
 import collections
 import csv
@@ -280,16 +266,6 @@ def convert_single_example(ex_index, example, label_list, max_seq_length,
     label_id = label_map[example.label]
   else:
     label_id = example.label
-
-#  if ex_index < 5:
-#    tf.logging.info("*** Example ***")
-#    tf.logging.info("guid: %s" % (example.guid))
-#    tf.logging.info("tokens: %s" % " ".join(
-#        [tokenization.printable_text(x) for x in tokens]))
-#    tf.logging.info("input_ids: %s" % " ".join([str(x) for x in input_ids]))
-#    tf.logging.info("input_mask: %s" % " ".join([str(x) for x in input_mask]))
-#    tf.logging.info("segment_ids: %s" % " ".join([str(x) for x in segment_ids]))
-#    tf.logging.info("label: %s (id = %d)" % (example.label, label_id))
 
   feature = InputFeatures(
       input_ids=input_ids,
@@ -697,18 +673,11 @@ def input_fn_builder(features, seq_length, is_training, drop_remainder):
 def convert_examples_to_features(examples, label_list, max_seq_length,
                                  tokenizer, task_name):
   """Convert a set of `InputExample`s to a list of `InputFeatures`."""
-
   features = []
-  #print('1'*20)
   print('Length of examples:',len(examples))
   for (ex_index, example) in enumerate(examples):
-    #print('2'*20)
-    #print('ex_index:',ex_index)
     if ex_index % 10000 == 0:
-      #print('3'*20) 
-      #tf.logging.info("Writing example %d of %d" % (ex_index, len(examples)))
       print("Writing example %d of %d" % (ex_index, len(examples)))
-    #print('4'*20)
     feature = convert_single_example(ex_index, example, label_list,
                                      max_seq_length, tokenizer, task_name)
 
