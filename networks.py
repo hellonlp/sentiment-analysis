@@ -66,12 +66,12 @@ class NetworkAlbert(object):
             # Logit           
             logits = tf.matmul(output_layer, output_weights, transpose_b=True)
             self.logits = tf.nn.bias_add(logits, output_bias)
-            print('logits: ',self.logits )#shape=(?, 3)
-            self.probabilities = tf.nn.softmax(self.logits, axis=-1)#(4,1)
+            print('logits: ',self.logits )
+            self.probabilities = tf.nn.softmax(self.logits, axis=-1)
         # Prediction
         with tf.variable_scope("Prediction"):                        
             self.preds = tf.argmax(self.logits, axis=-1, output_type=tf.int32)
-            print('preds:',self.preds)#shape=(?,)
+            print('preds:',self.preds)
         # Summary for tensorboard        
         with tf.variable_scope("Loss"):                        
             if self.is_training:
