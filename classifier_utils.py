@@ -716,42 +716,28 @@ def convert_examples_to_features(examples, label_list, max_seq_length,
   return features
 
 
-# 超参设置
+# Load parameters
 max_seq_length = hp.sequence_length
 do_lower_case = hp.do_lower_case#True
 vocab_file = hp.vocab_file 
-#分字器
 tokenizer = tokenization.FullTokenizer.from_scratch(vocab_file=vocab_file,
                                                     do_lower_case=do_lower_case, 
                                                     spm_model_file=None)                               
-#任务类型
 processor = ClassifyProcessor() 
-#获取标签
 label_list = processor.get_labels()
-data_dir = hp.data_dir #'E:/asr/classify/data'
+data_dir = hp.data_dir 
+
 
 def get_features():
-    #加载数据
+    # Load train data
     train_examples = processor.get_train_examples(data_dir) 
-    #提取参数
+    # Get onehot feature
     features = convert_examples_to_features( train_examples, label_list, max_seq_length, tokenizer,task_name='classify')
     input_ids = [f.input_ids for f in features]
     input_masks = [f.input_mask for f in features]
     segment_ids = [f.segment_ids for f in features]
     label_ids = [f.label_id for f in features]
     print('Get features finished!')
-    return input_ids,input_masks,segment_ids,label_ids
-
-def get_features_test():
-    #加载数据
-    train_examples = processor.get_test_examples(data_dir) 
-    #提取参数
-    features = convert_examples_to_features( train_examples, label_list, max_seq_length, tokenizer,task_name='classify_test')
-    input_ids = [f.input_ids for f in features]
-    input_masks = [f.input_mask for f in features]
-    segment_ids = [f.segment_ids for f in features]
-    label_ids = [f.label_id for f in features]
-    print('Get features(test) finished!')
     return input_ids,input_masks,segment_ids,label_ids
 
 
@@ -770,24 +756,8 @@ def get_feature_test(sentence):
 
 
 if __name__ == '__main__':
-    # 数据转换后格式
-    train_examples = processor.get_train_examples(data_dir) 
-    features = convert_examples_to_features(train_examples, 
-                                            label_list, 
-                                            max_seq_length, 
-                                            tokenizer,
-                                            task_name='classify')
-    #
-    print(features[2].input_ids)
-    #print(type(features[2].input_ids))
-    print(features[2].input_mask,len(features[2].input_mask))
-    print(features[2].segment_ids,len(features[2].segment_ids))
-    print(features[2].label_id)
-    ### 获取参数:train
-    features = get_features()
-    print(features)
-    ### 获取参数:test
-    sentence = '天天向上'
+    # Get feature
+    sentence = '小明爱学习'
     feature = get_feature_test(sentence)
     
     
