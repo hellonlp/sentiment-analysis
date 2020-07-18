@@ -11,12 +11,11 @@ pwd = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(pwd)
 
 class Hyperparamters:
-    # 参数设置
+    # Train parameters
     n_epoch = 20     
     print_step = 100
     train_rate = 0.999   
-    # 模型参数设置
-    batch_size = 16#128#256#8       
+    batch_size = 16    
     batch_size_predict = 1
     learning_rate = 5e-5 
     
@@ -29,19 +28,16 @@ class Hyperparamters:
     num_filters = 128
 
     # CNN parameters
-    sequence_length = 60#
-    conv1_left = 100    
-    # TextCNN parameters
+    sequence_length = 60 
     filter_sizes = [2,3,4,5,6,7]
     embedding_size = 384
     keep_prob = 0.5
         
-    ## bert path
+    # BERT
     name = 'albert_small_zh_google'
     bert_path = os.path.join(pwd,name)
     data_dir = os.path.join(pwd,'data')
     vocab_file = os.path.join(pwd,name,'vocab_chinese.txt')   
-    #  
     init_checkpoint = os.path.join(pwd,name,'albert_model.ckpt')
     saved_model_path = os.path.join(pwd,'model')    
     
