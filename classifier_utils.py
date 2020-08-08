@@ -25,8 +25,8 @@ def index2label(index):
 def read_csv(input_file):
     """Reads a tab separated value file."""
     df = load_csv(input_file,header=0)
-    jobcontent = list(df['content'])
-    jlabel = list(df['label'])
+    jobcontent = df['content'].tolist()
+    jlabel = df['label'].tolist()
     lines = [[str(jlabel[i]),str(jobcontent[i])] for i in range(len(jobcontent))]   
     print('Read csv finished!(1)')
     lines2 = [ [list(hp.dict_label.keys())[list(hp.dict_label.values()).index( l[0])], l[1]] for l in lines  if type(l[1])==str]
@@ -126,8 +126,8 @@ class DataProcessor(object):
   def _read_csv(cls,input_file):# 项目
     """Reads a tab separated value file."""
     df = load_csv(input_file,header=0)
-    jobcontent = list(df['content'])
-    jlabel = list(df['label'])
+    jobcontent = df['content'].tolist()
+    jlabel = df['label'].tolist()
     lines = [[str(jlabel[i]),str(jobcontent[i])] for i in range(len(jobcontent))]   
     print('Length of data:',len(lines))
     print('Read csv finished(2)!')
@@ -749,25 +749,13 @@ def get_feature_test(sentence):
 
 
 if __name__ == '__main__':
-    # 数据转换后格式
-    train_examples = processor.get_train_examples(data_dir) 
-    features = convert_examples_to_features(train_examples, 
-                                            label_list, 
-                                            max_seq_length, 
-                                            tokenizer,
-                                            task_name='classify')
-    #
-    print(features[2].input_ids)
-    #print(type(features[2].input_ids))
-    print(features[2].input_mask,len(features[2].input_mask))
-    print(features[2].segment_ids,len(features[2].segment_ids))
-    print(features[2].label_id)
-    ### 获取参数:train
-    features = get_features()
-    print(features)
-    ### 获取参数:test
+    #  Get feature
     sentence = '天天向上'
     feature = get_feature_test(sentence)
+    print('feature.input_ids',feature[0])
+    print('feature.input_mask',feature[1])
+    print('feature.segment_ids',feature[2])
+    print('feature.label_id',feature[3])
     
     
     
