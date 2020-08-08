@@ -19,7 +19,7 @@ from sentiment_analysis_albert.classifier_utils import get_feature_test
 
 class ModelAlbertTextCNN(object):
     """
-    加载 NetworkAlbert 神经网络模型
+    Load NetworkAlbert TextCNN model
     """
     def __init__(self,):
         self.albert, self.sess = self.load_model()
