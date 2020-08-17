@@ -48,34 +48,28 @@ with sess.as_default():
     for i in range(hp.num_train_epochs):
         indexs = shuffle_one(arr)       
         for j in range(num_batchs-1):
-            i1 = indexs[j * hp.batch_size:min((j + 1) * hp.batch_size, num_train_samples)]
-            
+            i1 = indexs[j * hp.batch_size:min((j + 1) * hp.batch_size, num_train_samples)]            
             # Get features
             input_id_ = select(input_ids,i1)
             input_mask_ = select(input_masks,i1)
             segment_id_ = select(segment_ids,i1)
-            label_id_ = select(label_ids,i1)
-            
+            label_id_ = select(label_ids,i1)         
             # Feed dict
             fd = {MODEL.input_ids: input_id_,
                   MODEL.input_masks: input_mask_,
                   MODEL.segment_ids:segment_id_,
-                  MODEL.label_ids:label_id_}
-            
+                  MODEL.label_ids:label_id_}   
             # Optimizer            
-            sess.run(MODEL.optimizer, feed_dict = fd)
-            
+            sess.run(MODEL.optimizer, feed_dict = fd)        
             # Tensorboard
             if j%hp.summary_step==0:
                 summary,glolal_step = sess.run([MODEL.merged,MODEL.global_step], feed_dict = fd)
-                writer.add_summary(summary, glolal_step)
-          
+                writer.add_summary(summary, glolal_step)         
             # Save Model
             if j%(num_batchs//hp.num_saved_per_epoch)==0:
                 if not os.path.exists(os.path.join(pwd, hp.file_save_model)):
                     os.makedirs(os.path.join(pwd, hp.file_save_model)) 
-                saver.save(sess, os.path.join(pwd, hp.file_save_model, 'model_%s_%s.ckpt'%(str(i),str(j))))
-            
+                saver.save(sess, os.path.join(pwd, hp.file_save_model, 'model_%s_%s.ckpt'%(str(i),str(j))))    
             # Log
             if j % hp.print_step == 0:
                 # Loss of Train data 
