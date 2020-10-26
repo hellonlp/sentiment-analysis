@@ -67,12 +67,10 @@ class NetworkAlbert(object):
             # Logit           
             logits = tf.matmul(output_layer, output_weights, transpose_b=True)
             self.logits = tf.nn.bias_add(logits, output_bias)
-            print('logits: ',self.logits )
             self.probabilities = tf.nn.softmax(self.logits, axis=-1)
         # Prediction
         with tf.variable_scope("Prediction"):                        
             self.preds = tf.argmax(self.logits, axis=-1, output_type=tf.int32)
-            print('preds:',self.preds)
         # Summary for tensorboard        
         with tf.variable_scope("Loss"):                        
             if self.is_training:
@@ -110,7 +108,6 @@ class NetworkAlbert(object):
                 num_train_steps = int(
                     len(train_examples) / hp.batch_size * hp.num_train_epochs)
                 num_warmup_steps = int(num_train_steps * hp.warmup_proportion)
-                print('num_train_steps',num_train_steps)
                 self.optimizer = optimization.create_optimizer(self.loss,
                                                                 hp.learning_rate, 
                                                                 num_train_steps, 
@@ -127,7 +124,7 @@ class NetworkAlbert(object):
         vs = tf.trainable_variables()
         for l in vs:
             print(l) 
-        print('='*40)
+
 
 
 
