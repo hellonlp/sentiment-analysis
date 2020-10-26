@@ -12,39 +12,8 @@ from sentiment_analysis_albert.hyperparameters import Hyperparamters as hp
 
 
 
-def cell_lstm(inputs,hidden_size,is_training):
-    """
-    inputs shape: (batch_size,sequence_length,embedding_size)
-    hidden_size: rnn hidden size
-    """
-    with tf.variable_scope('cell_lstm'):
-  
-        cell_forward = tf.contrib.rnn.BasicLSTMCell(hidden_size/2)
-        cell_backward = tf.contrib.rnn.BasicLSTMCell(hidden_size/2)
-        cell_forward = DropoutWrapper(cell_forward, 
-                                      input_keep_prob=1.0, 
-                                      output_keep_prob=0.5 if is_training else 1)
-        cell_backward = DropoutWrapper(cell_backward, 
-                                       input_keep_prob=1.0, 
-                                       output_keep_prob=0.5 if is_training else 1)                
-        
-        print('cell_forward: ',cell_forward )
-        outputs, states = tf.nn.bidirectional_dynamic_rnn(cell_forward,
-                                                          cell_backward,
-                                                          inputs,
-                                                          dtype=tf.float32)
-        forward_out, backward_out = outputs
-        outputs = tf.concat([forward_out, backward_out], axis=2)
-        # 激活函数
-        outputs = tf.nn.leaky_relu(outputs, alpha=0.2)            
-        value = tf.transpose(outputs, [1, 0, 2])
-        last = tf.gather(value, int(value.get_shape()[0] - 1))            
-        return last#(?,768)
-
-
-
 def cell_textcnn(inputs,is_training):
-    # 最后一个维度增加：-1
+    # Add a dimension in final shape
     inputs_expand = tf.expand_dims(inputs, -1)
     # Create a convolution + maxpool layer for each filter size
     pooled_outputs = []
