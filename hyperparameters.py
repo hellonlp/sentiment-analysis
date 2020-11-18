@@ -22,8 +22,9 @@ class Hyperparamters:
     summary_step = 10
     num_saved_per_epoch = 3
     max_to_keep = 100
-    logdir = 'logdir/weibo_14w'
-    file_save_model = 'model/weibo_14w'
+    logdir = 'logdir/model_01'
+    file_save_model = 'model/model_01'
+    file_load_model = 'model/model_01'
     
     # Optimization parameters
     num_train_epochs = 20
