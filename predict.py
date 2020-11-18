@@ -14,6 +14,7 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import tensorflow as tf
 from sentiment_analysis_albert.networks import NetworkAlbert
 from sentiment_analysis_albert.classifier_utils import get_feature_test
+from sentiment_analysis_albert.hyperparameters import Hyperparamters as hp
 
          
 
@@ -32,7 +33,7 @@ class ModelAlbertTextCNN(object):
                 albert =  NetworkAlbert(is_training=False)
                 saver = tf.train.Saver()  
                 sess.run(tf.global_variables_initializer())
-                checkpoint_dir = os.path.abspath(os.path.join(out_dir,'small-google-gelu'))
+                checkpoint_dir = os.path.abspath(os.path.join(out_dir,hp.file_load_model))
                 print (checkpoint_dir)
                 ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
                 saver.restore(sess, ckpt.model_checkpoint_path)
