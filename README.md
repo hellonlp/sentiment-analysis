@@ -13,6 +13,9 @@
  参考脚本 hyperparameters.py，直接修改里面的数值即可。  
  3、训练  
  python train.py  
+ 
+ # 知乎代码解读  
+ https://zhuanlan.zhihu.com/p/149491055
 
    
 
