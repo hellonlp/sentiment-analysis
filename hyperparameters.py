@@ -16,6 +16,7 @@ print('pwd:',pwd)
 
 class Hyperparamters:
     # Train parameters
+    num_train_epochs = 5
     print_step = 10 
     batch_size = 64     
     batch_size_eval = 128 
@@ -27,7 +28,6 @@ class Hyperparamters:
     file_load_model = 'model/model_01'
     
     # Optimization parameters
-    num_train_epochs = 20
     warmup_proportion = 0.1    
     use_tpu = None
     do_lower_case = True    
