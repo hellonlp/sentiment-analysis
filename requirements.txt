@@ -1,2 +1,0 @@
-tensorflow1.15
-sentencepiece
