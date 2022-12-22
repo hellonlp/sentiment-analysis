@@ -5,8 +5,8 @@ Created on Tue Jan  7 10:28:41 2020
 @author: cm
 """
 
-from sentiment_analysis_dict.networks import SentimentAnalysis
 
+from sentiment_analysis_dict.networks import SentimentAnalysis
 
 SA = SentimentAnalysis()
 
