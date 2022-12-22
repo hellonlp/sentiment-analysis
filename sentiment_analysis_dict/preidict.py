@@ -33,6 +33,3 @@ if __name__ =='__main__':
     text = '帅哥'
     text = '我妈说明儿不让出去玩'
     print(predict(text))
-
-
-

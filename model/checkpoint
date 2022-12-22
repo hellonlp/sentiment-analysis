@@ -1,3 +1,0 @@
-model_checkpoint_path: "F:\\leek\\sentiment_analysis_albert\\model\\model_1_0.ckpt"
-all_model_checkpoint_paths: "F:\\leek\\sentiment_analysis_albert\\model\\model_0_0.ckpt"
-all_model_checkpoint_paths: "F:\\leek\\sentiment_analysis_albert\\model\\model_1_0.ckpt"
