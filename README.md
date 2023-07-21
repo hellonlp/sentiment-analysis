@@ -29,11 +29,11 @@ xx
 基于词典的方法。  
 
 ### 2. sentiment_analysis_bayes
-基于bayes的方法。  
+基于传统机器学习**bayes**的方法。  
 
 ### 3. sentiment_analysis_albert
-基于深度学习的方法，使用了语言模型ALBERT和下游任务框架TextCNN。  
+基于深度学习的方法，使用了语言模型**ALBERT**和下游任务框架**TextCNN**。  
 
 ### 4. sentiment_analysis_albert_emoji
-基于深度学习的方法，使用了语言模型ALBERT和下游任务框架TextCNN。    
-引入未知token，在微调过程中的同时学习未知token的语义向量，从而达到识别未知token情感语义的目的。  
+基于深度学习的方法，使用了语言模型**ALBERT**和下游任务框架**TextCNN**。    
+引入**未知token**，在微调过程中的同时学习未知token的语义向量，从而达到识别未知token情感语义的目的。  
