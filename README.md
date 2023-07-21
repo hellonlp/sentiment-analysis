@@ -1,5 +1,13 @@
 # Sentiment Analysis: 情感分析
 
+
+## 一、简介
+### 1. 文本分类
+xx  
+### 2. 情感分析
+xx  
+
+
 **4种实现方法**
 ```
 ├── sentiment-analysis
