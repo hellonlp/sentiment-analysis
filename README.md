@@ -35,5 +35,5 @@ xx
 基于深度学习的方法，使用了语言模型ALBERT和下游任务框架TextCNN。  
 
 ### 4. sentiment_analysis_albert_emoji
-- 基于深度学习的方法，使用了语言模型ALBERT和下游任务框架TextCNN。    
-- 引入未知token，在微调过程中的同时学习未知token的语义向量，从而达到识别未知token情感语义的目的。  
+基于深度学习的方法，使用了语言模型ALBERT和下游任务框架TextCNN。    
+引入未知token，在微调过程中的同时学习未知token的语义向量，从而达到识别未知token情感语义的目的。  
