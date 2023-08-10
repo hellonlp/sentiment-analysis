@@ -36,7 +36,7 @@
 
 ### 4. sentiment_analysis_albert_emoji
 基于深度学习的方法，使用了语言模型**ALBERT**和下游任务框架**TextCNN**。    
-引入**未知token**，在微调过程中的同时学习未知token的语义向量，从而达到识别未知token情感语义的目的。  
+引入**未知token**（emoji是其中的一种），在微调过程中的同时学习未知token的语义向量，从而达到识别未知token情感语义的目的。  
 
 
 ## 参考
