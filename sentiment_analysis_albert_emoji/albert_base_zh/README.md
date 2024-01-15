@@ -10,4 +10,5 @@
 - albert_base_zh/vocab_emoji.txt
 
 ## 下载路径
-xx
+链接：https://pan.baidu.com/s/1BuXZyj1VmlvX60agv0cE5A?pwd=b9aq 
+提取码：b9aq
