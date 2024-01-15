@@ -1,6 +1,6 @@
 # 语言模型
 
-## ALBERT Base
+## ALBERT Base Chinese
 - albert_config.json 
 - albert_model.ckpt.data-00000-of-00001
 - albert_model.ckpt.index
