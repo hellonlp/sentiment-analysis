@@ -44,12 +44,6 @@ class Hyperparamters:
     filter_sizes = [2,3,4,5,6,7]
     embedding_size = 768
     keep_prob = 0.5
-
-    # Emoji 
-    sequence_length_emoji = 16
-    file_vocab_emoji = os.path.join(pwd, 'albert_base_zh', 'vocab_emoji.txt')
-    vocab_emoji_id2char,vocab_emoji_char2id = load_vocabulary(file_vocab_emoji)
-    vocab_size_emoji = len(vocab_emoji_char2id)
     
     # Sequence and Label
     sequence_length = 128
@@ -66,6 +60,12 @@ class Hyperparamters:
     vocab_file = os.path.join(pwd,name,'vocab_chinese.txt')  
     init_checkpoint = os.path.join(pwd,name,'albert_model.ckpt')
     saved_model_path = os.path.join(pwd,'model')    
+
+    # Emoji 
+    sequence_length_emoji = 16
+    file_vocab_emoji = os.path.join(pwd, name, 'vocab_emoji.txt')
+    vocab_emoji_id2char,vocab_emoji_char2id = load_vocabulary(file_vocab_emoji)
+    vocab_size_emoji = len(vocab_emoji_char2id)
     
     
 if __name__ == '__main__':  
