@@ -6,12 +6,10 @@ Created on Mon Nov 12 14:23:12 2018
 """
 
 
-
 import os
 import sys
 pwd = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(pwd)
-print('pwd:',pwd)
 
 
 class Hyperparamters:
@@ -26,8 +24,8 @@ class Hyperparamters:
 
     # Model paths
     logdir = 'logdir/model_01'
-    file_save_model = 'model/model_01'
-    file_load_model = 'model/model_01'
+    file_save_model = 'model/model_save'
+    file_load_model = 'model/model_load'
 
     # Train data and test data
     train_data = "sa_train.csv"
@@ -52,8 +50,7 @@ class Hyperparamters:
     '0': '-1',
     '1': '0',
     '2': '1'}
-
-    
+ 
     # ALBERT parameters
     name = 'albert_small_zh_google'
     bert_path = os.path.join(pwd,name)
@@ -61,15 +58,4 @@ class Hyperparamters:
     vocab_file = os.path.join(pwd,name,'vocab_chinese.txt')  
     init_checkpoint = os.path.join(pwd,name,'albert_model.ckpt')
     saved_model_path = os.path.join(pwd,'model')    
-    
-    
-    
-    
-    
-    
-    
-    
-
-
-    
     
