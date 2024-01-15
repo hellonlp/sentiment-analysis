@@ -1,5 +1,9 @@
-# coding=utf-8
-"""Utility functions for GLUE classification tasks."""
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Nov 12 14:23:12 2018
+
+@author: cm
+"""
 
 
 import os
@@ -11,11 +15,12 @@ import tensorflow.compat.v1 as tf
 from tensorflow.contrib import tpu as contrib_tpu
 from tensorflow.contrib import data as contrib_data
 from tensorflow.contrib import metrics as contrib_metrics
-from sentiment_analysis_albert import modeling,optimization,tokenization
-from sentiment_analysis_albert.hyperparameters import Hyperparamters as hp
+
+from sentiment_analysis_albert import modeling
+from sentiment_analysis_albert import optimization
+from sentiment_analysis_albert import tokenization
 from sentiment_analysis_albert.utils import load_csv
-
-
+from sentiment_analysis_albert.hyperparameters import Hyperparamters as hp
 
 
 def index2label(index):
@@ -145,17 +150,17 @@ class ClassifyProcessor(DataProcessor):
         """See base class."""
         print('*'*30)
         return self._create_examples(
-            self._read_csv(os.path.join(data_dir, "sa_train.csv")), "train")
+            self._read_csv(os.path.join(data_dir, hp.train_data)), "train")
         
     def get_dev_examples(self, data_dir):
         """See base class."""
         return self._create_examples(
-            self._read_csv(os.path.join(data_dir, "sa_test.csv")), "dev")
+            self._read_csv(os.path.join(data_dir, hp.test_data)), "dev")
 
     def get_test_examples(self, data_dir):
         """See base class."""
         return self._create_examples(
-             self._read_csv(os.path.join(data_dir, "sa_test.csv")), "test")
+             self._read_csv(os.path.join(data_dir, hp.test_data)), "test")
 
     def get_labels(self):
         """See base class."""
@@ -265,17 +270,7 @@ def convert_single_example(ex_index, example, label_list, max_seq_length,
     label_id = label_map[example.label]
   else:
     label_id = example.label
-
-#  if ex_index < 5:
-#    tf.logging.info("*** Example ***")
-#    tf.logging.info("guid: %s" % (example.guid))
-#    tf.logging.info("tokens: %s" % " ".join(
-#        [tokenization.printable_text(x) for x in tokens]))
-#    tf.logging.info("input_ids: %s" % " ".join([str(x) for x in input_ids]))
-#    tf.logging.info("input_mask: %s" % " ".join([str(x) for x in input_mask]))
-#    tf.logging.info("segment_ids: %s" % " ".join([str(x) for x in segment_ids]))
-#    tf.logging.info("label: %s (id = %d)" % (example.label, label_id))
-
+      
   feature = InputFeatures(
       input_ids=input_ids,
       input_mask=input_mask,
@@ -696,7 +691,6 @@ def convert_examples_to_features(examples, label_list, max_seq_length,
   return features
 
 
-
 # Load parameters
 max_seq_length = hp.sequence_length
 do_lower_case = hp.do_lower_case
@@ -706,12 +700,11 @@ tokenizer = tokenization.FullTokenizer.from_scratch(vocab_file=vocab_file,
                                                     spm_model_file=None)                               
 processor = ClassifyProcessor() 
 label_list = processor.get_labels()
-data_dir = hp.data_dir 
 
 
 def get_features():
     # Load train data
-    train_examples = processor.get_train_examples(data_dir) 
+    train_examples = processor.get_train_examples(hp.data_dir) 
     # Get onehot feature
     features = convert_examples_to_features( train_examples, label_list, max_seq_length, tokenizer,task_name='classify')
     input_ids = [f.input_ids for f in features]
@@ -723,7 +716,7 @@ def get_features():
 
 def get_features_test():
     # Load test data
-    train_examples = processor.get_test_examples(data_dir) 
+    train_examples = processor.get_test_examples(hp.data_dir) 
     # Get onehot feature
     features = convert_examples_to_features( train_examples, label_list, max_seq_length, tokenizer,task_name='classify_test')
     input_ids = [f.input_ids for f in features]
@@ -742,6 +735,7 @@ def create_example(line,set_type):
     example = InputExample(guid=guid, text_a=text_a, text_b=None, label=label)
     return example
 
+
 def get_feature_test(sentence):
     example = create_example(['0',sentence],'test')
     feature = convert_single_example(0, example, label_list,max_seq_length, tokenizer,task_name='classify')                                    
@@ -756,7 +750,4 @@ if __name__ == '__main__':
     print('feature.input_mask',feature[1])
     print('feature.segment_ids',feature[2])
     print('feature.label_id',feature[3])
-    
-    
-    
     
