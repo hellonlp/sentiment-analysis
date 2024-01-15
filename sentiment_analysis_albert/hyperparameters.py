@@ -23,9 +23,15 @@ class Hyperparamters:
     summary_step = 10
     num_saved_per_epoch = 3
     max_to_keep = 100
+
+    # Model paths
     logdir = 'logdir/model_01'
     file_save_model = 'model/model_01'
     file_load_model = 'model/model_01'
+
+    # Train data and test data
+    train_data = "sa_train.csv"
+    test_data = "sa_test.csv"
     
     # Optimization parameters
     warmup_proportion = 0.1    
