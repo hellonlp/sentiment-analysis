@@ -6,7 +6,6 @@ Created on Mon Nov 12 14:23:12 2020
 """
 
 
-
 import os
 import sys
 pwd = os.path.dirname(os.path.abspath(__file__))
@@ -48,12 +47,12 @@ class Hyperparamters:
 
     # Emoji 
     sequence_length_emoji = 16
-    file_vocab_emoji ='G:/data-qa-bot/sentiment_analysis_albert_emoji/albert_base_zh/vocab_emoji.txt'
+    file_vocab_emoji = os.path.join(pwd, 'albert_base_zh', 'vocab_emoji.txt')
     vocab_emoji_id2char,vocab_emoji_char2id = load_vocabulary(file_vocab_emoji)
     vocab_size_emoji = len(vocab_emoji_char2id)
     
     # Sequence and Label
-    sequence_length = 60
+    sequence_length = 128
     num_labels = 3
     dict_label = {
     '0': '-1',
@@ -72,12 +71,4 @@ class Hyperparamters:
 if __name__ == '__main__':  
     hp = Hyperparamters()
     print(hp.batch_size)
-    
-    
-    
-    
-    
-
-
-    
     
