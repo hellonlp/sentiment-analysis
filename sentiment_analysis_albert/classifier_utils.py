@@ -134,8 +134,6 @@ class DataProcessor(object):
     jobcontent = df['content'].tolist()
     jlabel = df['label'].tolist()
     lines = [[str(jlabel[i]),str(jobcontent[i])] for i in range(len(jobcontent))]   
-    print('Length of data:',len(lines))
-    print('Read csv finished(2)!')
     lines2 = [ [list(hp.dict_label.keys())[list(hp.dict_label.values()).index( l[0])], l[1]] for l in lines  if type(l[1])==str]
     random.shuffle(lines2)
     return lines2
@@ -179,9 +177,7 @@ class ClassifyProcessor(DataProcessor):
                 InputExample(guid=guid, text_a=text_a, text_b=None, label=label))
             # print(examples)
         return examples
-    
-    
-    
+       
 
 def convert_single_example(ex_index, example, label_list, max_seq_length,
                            tokenizer, task_name):
