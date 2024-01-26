@@ -8,13 +8,13 @@ Created on Thu May 30 20:44:42 2020
 
 import os
 import tensorflow as tf
+
 from sentiment_analysis_albert_emoji import modeling,optimization
 from sentiment_analysis_albert_emoji.classifier_utils import ClassifyProcessor
 from sentiment_analysis_albert_emoji.hyperparameters import Hyperparamters as hp
 from sentiment_analysis_albert_emoji.utils import time_now_string
 from sentiment_analysis_albert_emoji.modules import cell_textcnn_two
 from sentiment_analysis_albert_emoji.modules import cell_embedding
-
 
 
 num_labels = hp.num_labels
