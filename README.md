@@ -3,7 +3,7 @@
 [![Python](https://img.shields.io/badge/python-3.7.6-blue?logo=python&logoColor=FED643)](https://www.python.org/downloads/release/python-376/)
    
 
-<img src="https://github.com/hellonlp/sentiment-analysis/blob/master/imgs/02.png" width="1340" height="800">
+<img src="https://github.com/hellonlp/sentiment-analysis/blob/master/imgs/02.png" width="800" height="300">
 
 
 ## 一、简介
