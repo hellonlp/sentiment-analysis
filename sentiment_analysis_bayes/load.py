@@ -6,6 +6,7 @@ Created on Tue Jul 21 16:12:10 2020
 """
 
 import numpy as np
+
 from sentiment_analysis_bayes.utils import load_txt, drop_stopwords
 from sentiment_analysis_bayes.hyperparameters import Hyperparamters as hp
 
