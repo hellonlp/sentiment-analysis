@@ -41,6 +41,7 @@
 引入**未知token**（emoji是其中的一种），在微调过程中的同时学习未知token的语义向量，从而达到识别未知token情感语义的目的。  
 
 <br/>
+
 ## 参考
 [基于词典的文本情感分析（附代码）](https://zhuanlan.zhihu.com/p/142011031)  
 [文本分类 [ALBERT+TextCNN] [中文情感分析]（附代码）](https://zhuanlan.zhihu.com/p/149491055)  
