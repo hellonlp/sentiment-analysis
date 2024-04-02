@@ -10,6 +10,7 @@ import sys
 import jieba
 import numpy as np
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
 from sentiment_analysis_dict.utils import ToolGeneral
 from sentiment_analysis_dict.hyperparameters import Hyperparams as hp
 
@@ -35,7 +36,7 @@ class SentimentAnalysis():
                 poscount2 积极反转后的分值;
                 poscount3 积极词的最后分值（包括叹号的分值）      
                 """
-                poscount,negcount,poscount2,negcount2,poscount3,negcount3 = 0,0,0,0,0,0  # 
+                poscount,negcount,poscount2,negcount2,poscount3,negcount3 = 0,0,0,0,0,0  
                 if word in hp.posdict : 
                     if word in ['好','真','实在'] and words[min(i+1,len(words)-1)] in hp.pos_neg_dict  and words[min(i+1,len(words)-1)] != word:
                         continue
@@ -126,7 +127,6 @@ class SentimentAnalysis():
             count1=[]
         return count2
       
-        
     def sentiment_score(self,s):
         senti_score_list = self.sentiment_score_list(s)
         if senti_score_list != []:
@@ -171,13 +171,7 @@ class SentimentAnalysis():
         return _score1,_score0
         
 
-
-
 if __name__ =='__main__':
     sa = SentimentAnalysis()
     text = '我妈说明儿不让出去玩'
     print(sa.normalization_score(text))
-
-
-
-
