@@ -26,7 +26,7 @@ def sa(sentence):
     if point == 1:
         return 'Positif'
     elif point == 0:
-        return 'Negitif'
+        return 'Negatif'
 
 
 if __name__ == '__main__':
